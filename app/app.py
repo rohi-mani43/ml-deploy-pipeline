@@ -3,8 +3,7 @@ import joblib, os
 import pandas as pd
 
 app = Flask(__name__)
-
-MODEL_PATH = os.path.join(os.path.dirname(__file__), '../artifacts/model.joblib')
+MODEL_PATH = "/app/artifacts/model.joblib"
 
 try:
     model = joblib.load(MODEL_PATH)
