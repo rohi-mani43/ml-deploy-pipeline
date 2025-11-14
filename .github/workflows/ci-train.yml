@@ -9,13 +9,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    # 1. Checkout repository
+    # 1. Checkout source code
     - name: Checkout code
       uses: actions/checkout@v4
 
     # 2. Setup Python
     - name: Set up Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
         python-version: "3.10"
 
@@ -24,14 +24,14 @@ jobs:
       run: |
         pip install -r src/requirements.txt
 
-    # 4. Train model
+    # 4. Train ML model
     - name: Train model
       run: |
         python src/train.py --data-path data/IRIS.csv --model-path artifacts/model.joblib --target species
 
-    # 5. Upload trained model as artifact
+    # 5. Upload trained model artifact (NEW VERSION)
     - name: Upload model artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: trained-model
         path: artifacts/model.joblib
